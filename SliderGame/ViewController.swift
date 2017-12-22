@@ -33,19 +33,19 @@ class ViewController: UIViewController {
     let title = game.determineTitle()
     let message = game.generateMessage()
     
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+    let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
     
-    let action = UIAlertAction(title: "OK", style: .Default,
+    let action = UIAlertAction(title: "OK", style: .default,
                                handler: { action in
                                 self.startNewRound()
                                 self.updateLabels()
     })
     
     alert.addAction(action)
-    presentViewController(alert, animated: true, completion: nil)
+    present(alert, animated: true, completion: nil)
   }
   
-  @IBAction func sliderMoved(slider: UISlider) {
+  @IBAction func sliderMoved(_ slider: UISlider) {
     let currentValue = lroundf(slider.value)
     game.currentValue = currentValue
   }
@@ -69,20 +69,20 @@ class ViewController: UIViewController {
   
   func setupCustomSlider() {
     let thumbImageNormal = UIImage(named: "SliderThumb-Normal")
-    slider.setThumbImage(thumbImageNormal, forState: .Normal)
+    slider.setThumbImage(thumbImageNormal, for: UIControlState())
     
     let thumbImageHighlighted = UIImage(named: "SliderThumb-Highlighted")
-    slider.setThumbImage(thumbImageHighlighted, forState: .Highlighted)
+    slider.setThumbImage(thumbImageHighlighted, for: .highlighted)
     
     let insets = UIEdgeInsets(top: 0, left: 14, bottom: 0, right: 14)
     
     if let trackLeftImage = UIImage(named: "SliderTrackLeft") {
-      let trackLeftResizable = trackLeftImage.resizableImageWithCapInsets(insets)
-      slider.setMinimumTrackImage(trackLeftResizable, forState: .Normal)
+      let trackLeftResizable = trackLeftImage.resizableImage(withCapInsets: insets)
+      slider.setMinimumTrackImage(trackLeftResizable, for: UIControlState())
     }
     if let trackRightImage = UIImage(named: "SliderTrackRight") {
-      let trackRightResizable = trackRightImage.resizableImageWithCapInsets(insets)
-      slider.setMaximumTrackImage(trackRightResizable, forState: .Normal)
+      let trackRightResizable = trackRightImage.resizableImage(withCapInsets: insets)
+      slider.setMaximumTrackImage(trackRightResizable, for: UIControlState())
     }
   }
   

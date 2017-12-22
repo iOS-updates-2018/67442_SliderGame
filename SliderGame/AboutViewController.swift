@@ -15,7 +15,7 @@ class AboutViewController: UIViewController {
   }
 
   @IBAction func close() {
-    dismissViewControllerAnimated(true, completion: nil)
+    dismiss(animated: true, completion: nil)
   }
 
 }
